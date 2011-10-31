@@ -28,7 +28,6 @@ Features:
 ## TODO
 
 - Form Validation
-- Consolidate admin/list* views
 - Thumbnails
 - Default images
 - Payment Processing

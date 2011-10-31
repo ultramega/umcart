@@ -16,24 +16,36 @@ class Command_Admin_ListCategories extends Command_Admin_Common {
      * Execute command
      */
     public function exec() {
+        $this->data['header'] = Lang::HEADER_ALL_CATEGORIES;
+        
         $this->data['columns'] = array(
             'id'        => '#',
             'name'      => Lang::COL_NAME
         );
         
-        $this->data['categories'] = array();
+        $this->data['hclasses'] = array(
+            'name'  => 'main'
+        );
+        
+        $this->data['classes'] = array(
+            'id'    => 'right'
+        );
+                
+        $this->data['items'] = array();
         $categories = Model_Category::getAllCategories();
         foreach($categories as $key => $category) {
+            $name = str_repeat('-', $category['depth']) . $category['name'];
+            $name = String::safeHTMLText($name);
+            $url = Template::rewrite('?command=admin_editcategory&category=' . $category['id'], true);
+            
             $category_data = array(
                 'id'                => $category['id'],
-                'name'              => String::safeHTMLText($category['name'])
+                'name'              => sprintf('<a href="%s">%s</a>', $url, $name)
             );
             
-            $category_data['name'] = str_repeat('-', $category['depth']) . $category_data['name'];
-            
-            $this->data['categories'][] = $category_data;
+            $this->data['items'][] = $category_data;
         }
         
-        $this->loadView('admin/listcategories');
+        $this->loadView('admin/list');
     }
 }

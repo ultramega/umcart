@@ -16,6 +16,8 @@ class Command_Admin_ListUsers extends Command_Admin_Common {
      * Execute command
      */
     public function exec() {
+        $this->data['header'] = Lang::HEADER_ALL_USERS;
+        
         $user = new Model_User();
         $users = $this->getList($user);
         $user_count = $user->getCount();
@@ -28,21 +30,33 @@ class Command_Admin_ListUsers extends Command_Admin_Common {
             'date_registered'   => Lang::COL_REGISTER_DATE
         ));
         
-        $this->data['users'] = array();
+        $this->data['hclasses'] = array(
+            'email'  => 'main'
+        );
+        
+        $this->data['classes'] = array(
+            'id'                => 'right',
+            'date_registered'   => 'right'
+        );
+        
+        $this->data['items'] = array();
         
         foreach($users as $user) {
             $user_data = $user->getAll();
             
+            $name = String::safeHTMLText($user_data['email']);
+            $url = Template::rewrite('?command=admin_edituser&user=' . $user_data['id'], true);
+            
             $user_data = array(
                 'id'                => $user_data['id'],
-                'email'             => String::safeHTMLText($user_data['email']),
+                'email'             => sprintf('<a href="%s">%s</a>', $url, $name),
                 'level'             => $user_data['level'],
-                'date_registered'   => $user_data['date_registered']
+                'date_registered'   => date('n/d/Y h:i A', $user_data['date_registered'])
             );
             
-            $this->data['users'][] = $user_data;
+            $this->data['items'][] = $user_data;
         }
         
-        $this->loadView('admin/listusers');
+        $this->loadView('admin/list');
     }
 }

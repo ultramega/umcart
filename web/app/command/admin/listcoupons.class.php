@@ -16,6 +16,8 @@ class Command_Admin_ListCoupons extends Command_Admin_Common {
      * Execute command
      */
     public function exec() {
+        $this->data['header'] = Lang::HEADER_ALL_COUPONS;
+        
         $coupon = new Model_Coupon();
         $coupons = $this->getList($coupon);
         $coupon_count = $coupon->getCount();
@@ -30,10 +32,25 @@ class Command_Admin_ListCoupons extends Command_Admin_Common {
             'expire'            => Lang::COL_EXPIRE_TIME
         ));
         
-        $this->data['coupons'] = array();
+        $this->data['hclasses'] = array(
+            'code'  => 'main'
+        );
+        
+        $this->data['classes'] = array(
+            'id'                => 'right',
+            'discount'          => 'right',
+            'min_purchase'      => 'right',
+            'start'             => 'right',
+            'expire'            => 'right'
+        );
+                
+        $this->data['items'] = array();
         
         foreach($coupons as $coupon) {
             $coupon_data = $coupon->getAll();
+            
+            $name = String::safeHTMLText($coupon_data['code']);
+            $url = Template::rewrite('?command=admin_editcoupon&coupon=' . $coupon_data['id'], true);
             
             if($coupon_data['discount_type'] === 'percent') {
                 $discount = $coupon_data['discount'] . '%';
@@ -47,16 +64,16 @@ class Command_Admin_ListCoupons extends Command_Admin_Common {
             
             $coupon_data = array(
                 'id'                => $coupon_data['id'],
-                'code'              => String::safeHTMLText($coupon_data['code']),
+                'code'              => sprintf('<a href="%s">%s</a>', $url, $name),
                 'discount'          => $discount,
                 'min_purchase'      => String::formatMoney($coupon_data['min_purchase']),
                 'start'             => $start,
                 'expire'            => $expire
             );
             
-            $this->data['coupons'][] = $coupon_data;
+            $this->data['items'][] = $coupon_data;
         }
         
-        $this->loadView('admin/listcoupons');
+        $this->loadView('admin/list');
     }
 }
