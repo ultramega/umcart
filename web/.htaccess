@@ -1,5 +1,5 @@
 <Files config.php>
-Order allow,deny
+Order deny,allow
 Deny from all
 </Files>
 
