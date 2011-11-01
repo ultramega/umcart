@@ -11,6 +11,7 @@ In no particular order:
 - Copy the files in web/ to your web server
 - Create a database and import umcart.sql
 - Edit the constant values as needed (just the UPPERCASE ones)
+- Set directory images to be writable by your web server
 
 ## Features
 
