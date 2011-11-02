@@ -30,7 +30,6 @@ Features:
 
 - Form Validation
 - Thumbnails
-- Default images
 - Payment Processing
 - Error Handling/Logging
 - URL Rewriting
@@ -40,6 +39,8 @@ Features:
 - Interface Styling
 - Installation Script
 - End-User Documentation
+- HTML formatting for descriptions
+- WYSIWYG editor integration
 
 ## MIT License
 
