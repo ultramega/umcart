@@ -9,6 +9,13 @@
             <div class="details">
                 <p class="price"><?php echo String::formatMoney($p['price']); ?></p>
                 <p><?php echo $p['stock']; ?></p>
+                <form action="<?php Template::rewrite('?command=editcart'); ?>" method="post">
+                    <?php Template::csrfToken(); ?>
+                    <input type="hidden" name="action" value="add">
+                    <input type="hidden" name="product" value="<?php echo $p['id']; ?>">
+                    <input type="hidden" name="quantity" value="1">
+                    <input type="submit" value="<?php echo Lang::ADD_TO_CART; ?>">
+                </form>
             </div>
         </article>
 <?php endforeach; ?>
