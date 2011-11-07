@@ -49,7 +49,17 @@ class Command_ViewCategory extends Command_Common {
         $category->loadProducts();
         $products = array();
         foreach($category->products as $product) {
-            $products[] = $product->getAll();
+            $product = $product->getAll();
+            if(is_null($product['image'])) {
+                $product['image'] = 'default.png';
+            }
+            if($product['stock'] > 0) {
+                $product['stock'] = Lang::IN_STOCK;
+            }
+            else {
+                $product['stock'] = Lang::OUT_OF_STOCK;
+            }
+            $products[] = $product;
         }
         $this->data['products'] = $products;
     }

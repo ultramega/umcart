@@ -41,6 +41,8 @@ class Lang {
         NO_RECORDS                      = 'No records found',
         HEADER_NOT_FOUND                = 'Not Found',
         HEADER_ACCESS_DENIED            = 'Access Denied',
+        IN_STOCK                        = 'In Stock',
+        OUT_OF_STOCK                    = 'Out Of Stock',
         
         // Account
         ACCOUNT                         = 'Account',
