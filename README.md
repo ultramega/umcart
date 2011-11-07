@@ -29,7 +29,6 @@ Features:
 ## TODO
 
 - Form Validation
-- Thumbnails
 - Payment Processing
 - Error Handling/Logging
 - URL Rewriting
