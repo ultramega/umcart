@@ -22,7 +22,7 @@
                     <td class="center"><input type="checkbox" name="items[<?php echo $id; ?>][delete]" value="1"></td>
                     <td><input type="text" name="items[<?php echo $id; ?>][quantity]" value="<?php echo $p['quantity']; ?>" size="2" maxlength="3"></td>
                     <td>
-    <?php if(!is_null($p['product']['image'])): ?>
+<?php if(!is_null($p['product']['image'])): ?>
                         <img src="<?php echo Template::scaledImage($p['product']['image'], 60, 40); ?>" width="60" height="40" alt="">
 <?php endif; ?>
                         <a href="<?php Template::rewrite('?command=viewproduct&product_id=' . $p['product']['id']); ?>"><?php echo $p['product']['title']; ?></a>
