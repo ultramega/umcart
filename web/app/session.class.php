@@ -35,7 +35,7 @@ class Session {
         if(empty($domain)) {
             $domain = $_SERVER['SERVER_NAME'];
         }
-        $https = !empty($_SERVER['HTTPS']);
+        $https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
         session_set_cookie_params(0, Config::$cookie_path, $domain, $https, true);
         session_start();
         if(!$this->validate()) {
