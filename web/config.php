@@ -52,5 +52,6 @@ class Config {
             $default_language       = 'en_us',
             $currency_symbol        = '$',
             $theme                  = 'default',
-            $items_per_page         = 30;
+            $items_per_page         = 30,
+            $paypal_id              = '';
 }

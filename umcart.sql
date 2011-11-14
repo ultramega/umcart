@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 28, 2011 at 12:45 PM
+-- Generation Time: Nov 14, 2011 at 10:42 AM
 -- Server version: 5.1.37
 -- PHP Version: 5.3.0
 
@@ -162,6 +162,7 @@ CREATE TABLE `orders` (
   `date_cleared` datetime DEFAULT NULL,
   `date_shipped` datetime DEFAULT NULL,
   `tracking` text,
+  `payment_id` text,
   PRIMARY KEY (`id`),
   KEY `cart_id` (`cart_id`),
   KEY `user` (`user`),

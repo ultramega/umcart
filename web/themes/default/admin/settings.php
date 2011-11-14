@@ -30,6 +30,10 @@
                     <td><input type="text" name="items_per_page" id="iitems_per_page" value="<?php echo $settings['items_per_page']; ?>"></td>
                 </tr>
                 <tr>
+                    <td><label for="ipaypal_id"><?php echo Lang::LABEL_PAYPAL_ID; ?>:</label></td>
+                    <td><input type="text" name="paypal_id" id="ipaypal_id" value="<?php echo $settings['paypal_id']; ?>"></td>
+                </tr>
+                <tr>
                     <th colspan="2"><?php echo Lang::OPTIONS_COOKIES; ?></th>
                 </tr>
                 <tr>

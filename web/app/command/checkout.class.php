@@ -32,16 +32,20 @@ class Command_Checkout extends Command_Common {
         if(isset($this->post['checkout'])) {
             if($this->validateInput()) {
                 $this->commitOrder($cart);
+                $this->data['url'] = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF'];
                 $this->loadView('order_submitted');
-                return;
+            }
+            else {
+                $this->loadView('redirect', '?command=checkout');
             }
         }
-        
-        $this->loadCart($cart);
-        $this->loadAccountData();
-        $this->loadAddressData();
-        
-        $this->loadView('checkout');
+        else {
+            $this->loadCart($cart);
+            $this->loadAccountData();
+            $this->loadAddressData();
+
+            $this->loadView('checkout');
+        }
     }
     /**
      * Validate user input
@@ -140,6 +144,9 @@ class Command_Checkout extends Command_Common {
         }
         
         $this->session->cart_id = null;
+        $user = new Model_User($this->session->user_id);
+        $user->set('cart_id', null);
+        $user->save();
 
         $this->data['order'] = $order->getAll();
     }

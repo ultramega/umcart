@@ -34,7 +34,8 @@ class Model_Order extends Model {
         'date_placed'       => false,
         'date_cleared'      => false,
         'date_shipped'      => false,
-        'tracking'          => false
+        'tracking'          => false,
+        'payment_id'        => false
     );
     /**
      * Cart associated with this order

@@ -232,5 +232,6 @@ class Lang {
         LABEL_PATH_THEMES               = 'Internal Themes Path',
         LABEL_PATH_THEMES_WEB           = 'Web Accessible Themes Path',
         LABEL_PATH_IMAGES               = 'Internal Images Path',
-        LABEL_PATH_IMAGES_WEB           = 'Web Accessible Images Path';
+        LABEL_PATH_IMAGES_WEB           = 'Web Accessible Images Path',
+        LABEL_PAYPAL_ID                 = 'PayPal Account ID';
 }
