@@ -19,6 +19,7 @@ UMCart is still in early development with many features missing or not fully imp
 
 Features:
 
+- PayPal payment processing
 - Category tree with unlimited depth
 - Product description, image, and custom attributes
 - Shopping cart
@@ -29,7 +30,6 @@ Features:
 ## TODO
 
 - Form Validation
-- Payment Processing
 - Error Handling/Logging
 - URL Rewriting
 - Cache Implementation
@@ -40,6 +40,9 @@ Features:
 - End-User Documentation
 - HTML formatting for descriptions
 - WYSIWYG editor integration
+- Currency Selection
+- Collision check on user registrations
+- Plugin system
 
 ## MIT License
 
