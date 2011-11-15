@@ -11,7 +11,7 @@
                     <p><?php String::say(Lang::LOGGED_IN_AS, $account['email']); ?></p>
                     <input type="hidden" name="email" value="<?php echo $account['email']; ?>">
 <?php else: ?>
-                    <h3><?php echo Lang::CREATE_ACCOUNT; ?> (<?php echo Lang::OPTIONAL; ?>)</h3>
+                    <h3><?php echo Lang::CREATE_ACCOUNT; ?></h3>
                     <label><?php echo Lang::LABEL_EMAIL; ?>:
                         <input type="text" name="email" value="<?php echo $account['email']; ?>">
                     </label><br>

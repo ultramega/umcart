@@ -28,7 +28,11 @@ class Command_Checkout extends Command_Common {
             $this->loadView('redirect', '?command=viewcart');
             return;
         }
-                
+
+        $this->loadCart($cart);
+        $this->loadAccountData();
+        $this->loadAddressData();
+
         if(isset($this->post['checkout'])) {
             if($this->validateInput()) {
                 $this->commitOrder($cart);
@@ -40,10 +44,6 @@ class Command_Checkout extends Command_Common {
             }
         }
         else {
-            $this->loadCart($cart);
-            $this->loadAccountData();
-            $this->loadAddressData();
-
             $this->loadView('checkout');
         }
     }
@@ -124,6 +124,10 @@ class Command_Checkout extends Command_Common {
         if(isset($this->session->user_id)) {
             $order->set('user', $this->session->user_id);
             $email = $this->session->user_email;
+            
+            $user = new Model_User($this->session->user_id);
+            $user->set('cart_id', null);
+            $user->save();
         }
         
         $cart = new Model_Cart($this->session->cart_id);
@@ -144,9 +148,6 @@ class Command_Checkout extends Command_Common {
         }
         
         $this->session->cart_id = null;
-        $user = new Model_User($this->session->user_id);
-        $user->set('cart_id', null);
-        $user->save();
 
         $this->data['order'] = $order->getAll();
     }
