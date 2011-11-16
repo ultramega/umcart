@@ -32,7 +32,7 @@
                 </tr>
                 <tr>
                     <td><label for="idescription"><?php echo Lang::LABEL_DESCRIPTION; ?>:</label></td>
-                    <td><textarea name="description" id="idescription" cols="64" rows="8"><?php echo $product['description']; ?></textarea></td>
+                    <td><textarea name="description" id="idescription" cols="64" rows="8" class="tinymce"><?php echo $product['description']; ?></textarea></td>
                 </tr>
                 <tr>
                     <td><label for="iimage"><?php echo Lang::LABEL_PRODUCT_IMAGE; ?>:</label></td>

@@ -22,7 +22,7 @@ class Command_ViewProduct extends Command_Common {
             
             $product_data = $product->getAll();
             $product_data['title'] = String::safeHTMLText($product_data['title']);
-            $product_data['description'] = nl2br(String::safeHTMLText($product_data['description']));
+            $product_data['description'] = $product_data['description'];
             $product_data['price'] = String::formatMoney($product_data['price']);
             
             if(is_null($product_data['image'])) {
