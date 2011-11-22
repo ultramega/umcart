@@ -38,11 +38,10 @@ Features:
 - Interface Styling
 - Installation Script
 - End-User Documentation
-- HTML formatting for descriptions
-- WYSIWYG editor integration
 - Currency Selection
 - Collision check on user registrations
 - Plugin system
+- Facebook/Twitter/OpenID logins
 
 ## MIT License
 
